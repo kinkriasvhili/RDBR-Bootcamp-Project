@@ -1,3 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap");
+
+@font-face {
+  font-family: "FiraGO";
+  src: url("/fonts/FiraGO-Light.woff2") format("woff2"),
+    url("/fonts/FiraGO-Light.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FiraGO";
+  src: url("/fonts/FiraGO-Regular.woff2") format("woff2"),
+    url("/fonts/FiraGO-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FiraGO";
+  src: url("/fonts/FiraGO-Bold.woff2") format("woff2"),
+    url("/fonts/FiraGO-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FiraGO";
+  src: url("/fonts/FiraGO-ExtraBold.woff2") format("woff2"),
+    url("/fonts/FiraGO-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}
+
 :root {
   --primary-color: #8338ec;
+  --yellow-color: #f7bc30;
+  --orange-color: #fb5607;
+  --pink-color: #ff006e;
+  --blue-color: #3a86ff;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "FiraGO";
+}
+
+button {
+  padding: 15px 15px;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  background-color: var(--primary-color);
+  cursor: pointer;
 }

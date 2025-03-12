@@ -1,7 +1,0 @@
-@import url("../general.css");
-
-.nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
