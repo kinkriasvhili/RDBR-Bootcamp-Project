@@ -38,6 +38,9 @@
   --orange-color: #fb5607;
   --pink-color: #ff006e;
   --blue-color: #3a86ff;
+  --black-color: #212529;
+  --gray-color: #dee2e6;
+  --grayShades-color: #0d0f10;
 }
 
 body {
@@ -53,4 +56,15 @@ button {
   border: none;
   background-color: var(--primary-color);
   cursor: pointer;
+}
+
+li,
+p {
+  margin: none;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+ul {
+  list-style-type: none;
 }

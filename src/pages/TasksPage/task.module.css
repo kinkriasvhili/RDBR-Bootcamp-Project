@@ -1,0 +1,39 @@
+@import url("../../general.css");
+
+.landingPageMain {
+  padding: 0 120px;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerTitle p {
+  color: var(--black-color);
+  font-weight: 600;
+  font-size: 34px;
+}
+
+.filterContainer {
+  border-radius: 10px;
+  border: 1px solid var(--gray-color);
+}
+.filterContainer ul {
+  padding: 2px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.filterContainer ul li {
+  cursor: pointer;
+  padding: 10px 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: var(--grayShades-color);
+  transform: 0.2s;
+}
+
+.filterContainer ul li:hover {
+  color: var(--primary-color);
+}

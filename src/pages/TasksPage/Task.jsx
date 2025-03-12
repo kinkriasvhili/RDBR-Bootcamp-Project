@@ -1,3 +1,13 @@
+import Filter from "./Filter";
+import styles from "./task.module.css";
+
 export default function Task() {
-  return <div>This is task page</div>;
+  return (
+    <main className={styles.landingPageMain}>
+      <div className={styles.headerTitle}>
+        <p>დავალებების გვერდი</p>
+      </div>
+      <Filter />
+    </main>
+  );
 }
