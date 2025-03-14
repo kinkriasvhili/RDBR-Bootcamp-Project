@@ -1,4 +1,4 @@
-import Filter from "./Filter";
+import Filter from "./filter/Filter";
 import styles from "./task.module.css";
 
 export default function Task() {

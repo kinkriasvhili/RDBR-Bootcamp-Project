@@ -13,13 +13,21 @@
 }
 
 .filterContainer {
+  max-width: 688px;
+  max-height: 44px;
   border-radius: 10px;
   border: 1px solid var(--gray-color);
+  display: flex;
+  align-items: center;
 }
 .filterContainer ul {
   padding: 2px;
   display: flex;
   justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  gap: 45px;
+  width: 100%;
 }
 
 .filterContainer ul li {
@@ -32,6 +40,7 @@
   font-size: 16px;
   color: var(--grayShades-color);
   transform: 0.2s;
+  max-width: 200px;
 }
 
 .filterContainer ul li:hover {
