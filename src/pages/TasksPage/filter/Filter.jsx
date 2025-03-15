@@ -1,7 +1,7 @@
-import styles from "../task.module.css";
+import styles from "./filter.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import FilterModal from "./Department";
+import FilterModal from "./FilterModal";
 import { useState } from "react";
 
 export default function Filter() {
@@ -11,31 +11,36 @@ export default function Filter() {
   const openModal = (type) => {
     setEndPointType(type);
     setIsModalOpen((prev) => !prev);
+    if (isModalOpen) {
+      setEndPointType("");
+    }
+  };
+
+  const onClose = () => {
+    setIsModalOpen(false);
+    setEndPointType("");
   };
 
   return (
     <div className={styles.filterContainer}>
       <ul>
         <li
-          onClick={() => {
-            openModal("departments");
-          }}
+          onClick={() => openModal("departments")}
+          className={endPointType === "departments" ? styles.activeLi : ""}
         >
           დეპარტამენტი
           <FontAwesomeIcon icon={faChevronDown} />
         </li>
         <li
-          onClick={() => {
-            openModal("priorities");
-          }}
+          onClick={() => openModal("priorities")}
+          className={endPointType === "priorities" ? styles.activeLi : ""}
         >
           პრიორიტეტი
           <FontAwesomeIcon icon={faChevronDown} />
         </li>
         <li
-          onClick={() => {
-            openModal("employees");
-          }}
+          onClick={() => openModal("employees")}
+          className={endPointType === "employees" ? styles.activeLi : ""}
         >
           თანამშრომელი
           <FontAwesomeIcon icon={faChevronDown} />
@@ -44,8 +49,9 @@ export default function Filter() {
 
       <FilterModal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={onClose}
         endPointType={endPointType}
+        setIsModalOpen={setIsModalOpen}
       />
     </div>
   );
