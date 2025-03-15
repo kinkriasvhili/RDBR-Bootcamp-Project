@@ -1,4 +1,5 @@
 import logo from "../images/Hourglass.png";
+import CreateEmployee from "./CreateEmployee/CreateEmployee";
 import styles from "./nav.module.css";
 export default function Nav() {
   return (
@@ -8,7 +9,7 @@ export default function Nav() {
         <img src={logo} alt="" />
       </div>
       <div className={styles.rightSide}>
-        <button className={styles.buttonLeft}>თანამშრომლის შექმნა</button>
+        <CreateEmployee />
         <button className={styles.buttonRight}>+ შექმენი ახალი დავალება</button>
       </div>
     </nav>
