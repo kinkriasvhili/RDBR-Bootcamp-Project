@@ -4,7 +4,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import FilterModal from "./FilterModal";
 import { useState } from "react";
 
-export default function Filter() {
+export default function Filter({ employees, setEmployees }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [endPointType, setEndPointType] = useState("");
 
@@ -48,6 +48,8 @@ export default function Filter() {
       </ul>
 
       <FilterModal
+        employees={employees}
+        setEmployees={setEmployees}
         isOpen={isModalOpen}
         onClose={onClose}
         endPointType={endPointType}

@@ -1,19 +1,19 @@
-import { api } from "../../../App";
 import { useEffect, useState, useRef } from "react";
 import styles from "./filter.module.css";
+import { api, apiToken } from "../../../App";
 
 export default function FilterModal({
   isOpen,
   onClose,
   endPointType,
-  setIsModalOpen,
+  employees,
+  setEmployees,
 }) {
   const [data, setData] = useState(null);
   const modalRef = useRef(null); // Reference to the modal div
 
   useEffect(() => {
-    if (!isOpen || !endPointType) return;
-
+    if (!isOpen || !endPointType || endPointType === "employees") return;
     const fetchData = async () => {
       try {
         const url = `${api}/${endPointType}`;
@@ -32,6 +32,32 @@ export default function FilterModal({
 
     fetchData();
   }, [isOpen, endPointType]);
+
+  useEffect(() => {
+    console.log(endPointType);
+    if (endPointType != "employees") return;
+    async function fetchEmployees() {
+      try {
+        const response = await fetch(`${api}/${endPointType}`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${apiToken}`,
+            Accept: "application/json",
+          },
+        });
+
+        if (!response.ok) throw new Error("Failed to fetch employees");
+
+        const data = await response.json();
+        console.log(data);
+        setEmployees(data);
+      } catch (error) {
+        console.error("Error fetching employees:", error);
+      }
+    }
+
+    fetchEmployees();
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {

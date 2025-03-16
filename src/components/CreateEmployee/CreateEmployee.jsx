@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import EmployeeModal from "./EmployeeModal";
 import styles from "../nav.module.css";
 
-export default function CreateEmployee() {
+export default function CreateEmployee({ employees, setEmployees }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [employees, setEmployees] = useState([]);
 
   const handleClick = () => {
     setIsModalOpen((prev) => !prev);
@@ -23,7 +22,7 @@ export default function CreateEmployee() {
       <EmployeeModal
         isModalOpen={isModalOpen}
         closeModal={() => setIsModalOpen(false)}
-        onEmployeeAdded={handleEmployeeAdded}
+        EmployeeAdd={handleEmployeeAdded}
       />
 
       {/* <ul>
