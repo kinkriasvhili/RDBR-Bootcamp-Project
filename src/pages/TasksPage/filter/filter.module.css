@@ -39,7 +39,7 @@
   top: 320px;
   left: 118px;
   background-color: white;
-  border: 1px solid var(--gray-color);
+  border: 1px solid var(--primary-color);
   border-radius: 10px;
   width: 628px;
   position: fixed;

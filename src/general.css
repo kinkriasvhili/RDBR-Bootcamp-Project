@@ -70,3 +70,7 @@ p {
 ul {
   list-style-type: none;
 }
+
+input {
+  outline: none;
+}

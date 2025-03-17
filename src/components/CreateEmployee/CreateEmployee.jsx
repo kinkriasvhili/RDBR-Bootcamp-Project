@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import EmployeeModal from "./EmployeeModal";
-import styles from "../nav.module.css";
+import styles from "./employee.module.css";
 
 export default function CreateEmployee({ employees, setEmployees }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
