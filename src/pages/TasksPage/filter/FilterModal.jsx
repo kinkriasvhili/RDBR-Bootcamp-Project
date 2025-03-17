@@ -31,21 +31,23 @@ const getItemText = (item) =>
   endPointType !== "employees" ? item.name : `${item.name} ${item.surname}`;
 
 return (
-  <div className={styles.moduleContainer}>
-    {list ? (
-      <div className={styles.itemsCont}>
-        {list.map((item) => (
-          <div className={styles.itemCont} key={item.id}>
-            <input type="checkbox" />
-            <p>{getItemText(item)}</p>
-          </div>
-        ))}
+  <div className={styles.filterModalOverlay} onClick={onClose}>
+    <div className={styles.moduleContainer}>
+      {list ? (
+        <div className={styles.itemsCont}>
+          {list.map((item) => (
+            <div className={styles.itemCont} key={item.id}>
+              <input type="checkbox" />
+              <p>{getItemText(item)}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>იტვირთება...</p>
+      )}
+      <div className={styles.closeButtonContainer}>
+        <button onClick={onClose}>არჩევა</button>
       </div>
-    ) : (
-      <p>იტვირთება...</p>
-    )}
-    <div className={styles.closeButtonContainer}>
-      <button onClick={onClose}>არჩევა</button>
     </div>
   </div>
 );

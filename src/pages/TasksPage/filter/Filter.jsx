@@ -17,6 +17,7 @@ export default function Filter({ employees, setEmployees }) {
   };
 
   const onClose = () => {
+    console.log('onclose')
     setIsModalOpen(false);
     setEndPointType("");
   };
