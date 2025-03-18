@@ -2,6 +2,9 @@ import { useState, useReducer } from "react";
 import styles from "./employee.module.css";
 import { api, apiToken } from "../../App"; // Import API details
 import closeBtn from '../../images/Cancel.png'
+import Department from "../inputs/Department";
+import NormalInput from "../inputs/Normal";
+import Requairements from "../inputs/Requairements";
 
 const fromReducer = (state, action) => {
   switch (action.type) {
@@ -23,7 +26,7 @@ export default function EmployeeModal({
 }) {
   const [formData, dispatch] = useReducer(fromReducer, {
     name: "",
-    surnmae: "",
+    surname: "",
     avatar: null,
     department_id: 1
   })
@@ -76,51 +79,34 @@ export default function EmployeeModal({
             <div className={styles.inputContainer}>
               <div className={styles.inputRow}>
                 <div className={styles.singleInputCon}>
-                  <label>სახელი*</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                  />
+                  <NormalInput 
+                    inputName='სახელი' 
+                    formData={formData} handleChange={handleChange} name="name"
+                    type="text"/>
                   <div className={styles.requairements}>
-                    <span>მინიმუმ 2 სიმბოლო</span>
-                    <span>მაქსიმუმ 255 სიმბოლო</span>
+                    <Requairements />
                   </div>
                 </div>
                 <div className={styles.singleInputCon}>
-                  <label>გვარი*</label>
-                  <input
-                    type="text"
-                    name="surname"
-                    value={formData.surname}
-                    onChange={handleChange}
-                    required
-                  />
+                  <NormalInput 
+                    inputName='გვარი'  
+                    formData={formData} handleChange={handleChange} name="surname"
+                    type="text"/>
                   <div className={styles.requairements}>
-                    <span>მინიმუმ 2 სიმბოლო</span>
-                    <span>მაქსიმუმ 255 სიმბოლო</span>
+                    <Requairements />
                   </div>
                 </div>
               </div>
             </div>
             <div className={styles.avatarContainer}>
-              <label>ავატარი*</label>
-              <input
-                type="file"
-                name="avatar"
-                onChange={handleFileChange}
-                required
-              />
+               <NormalInput 
+                  inputName='ავატარი'  
+                  formData={null}
+                  handleChange={handleChange} name="surnavatarame"
+                  type="file"/>
             </div>
             <div className={styles.inputContainer}>
-              <label >დეპარტამენტი</label>
-              <select id="Departament" name="options">
-                <option value="option1">Dep 1</option>
-                <option value="option2">Dep 2</option>
-                <option value="option3">Dep 3</option>
-              </select>
+              <Department />
             </div>
             <div className={styles.buttonsContainer}>
               <button className={styles.cancelButton} onClick={closeModal}>გაუქმება</button>
