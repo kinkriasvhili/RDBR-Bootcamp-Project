@@ -1,0 +1,59 @@
+.singleInputCon {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 385px;
+}
+label {
+  font-size: 14px;
+  color: var(--grayShades-color);
+}
+input, select {
+  padding: 12px;
+  border: 1px solid var(--gray-color);
+  border-radius: 10px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+select {
+  margin-top: 10px;
+  width: 50%;
+  display: block;
+  outline: none;
+  cursor: pointer;
+}
+
+.requairements {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--grayShades-color);
+}
+
+.avatarContainer {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.avatarContainer input {
+  cursor:pointer;
+  padding: 10px;
+  border: 2px dashed  var(--gray-color);
+  border-radius: 10px;
+  font-size: 16px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.disable {
+  display: none;
+}

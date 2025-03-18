@@ -78,36 +78,29 @@ export default function EmployeeModal({
           <form onSubmit={handleSubmit}>
             <div className={styles.inputContainer}>
               <div className={styles.inputRow}>
-                <div className={styles.singleInputCon}>
-                  <NormalInput 
-                    inputName='სახელი' 
-                    formData={formData} handleChange={handleChange} name="name"
-                    type="text"/>
-                  <div className={styles.requairements}>
-                    <Requairements />
-                  </div>
-                </div>
-                <div className={styles.singleInputCon}>
-                  <NormalInput 
-                    inputName='გვარი'  
-                    formData={formData} handleChange={handleChange} name="surname"
-                    type="text"/>
-                  <div className={styles.requairements}>
-                    <Requairements />
-                  </div>
-                </div>
+                <NormalInput 
+                  inputName='სახელი' 
+                  formData={formData} 
+                  handleChange={handleChange} 
+                  name="name"
+                  type="text"/>
+                
+                <NormalInput 
+                  inputName='გვარი'  
+                  formData={formData} 
+                  handleChange={handleChange} 
+                  name="surname"
+                  type="text"/>
               </div>
-            </div>
-            <div className={styles.avatarContainer}>
-               <NormalInput 
-                  inputName='ავატარი'  
-                  formData={null}
-                  handleChange={handleChange} name="surnavatarame"
-                  type="file"/>
-            </div>
-            <div className={styles.inputContainer}>
+              <NormalInput 
+                inputName='ავატარი'  
+                formData={null}
+                handleChange={handleFileChange} 
+                name="avatar"
+                type="file"/>
               <Department />
             </div>
+            
             <div className={styles.buttonsContainer}>
               <button className={styles.cancelButton} onClick={closeModal}>გაუქმება</button>
               <button className={styles.addEmployeeBtn} type="submit">დაამატე თანამშრომელი</button>

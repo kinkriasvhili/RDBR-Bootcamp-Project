@@ -1,6 +1,12 @@
+import styles from './inputs.module.css'
+import Requairements from './Requairements';
+
 export default function NormalInput({ formData, handleChange, inputName, type, name }) {
   return (
-    <>
+    <div  
+      className={name === "avatar" ? styles.avatarContainer : styles.singleInputCon}
+      
+    >
       <label>{inputName}*</label>
       <input
         type={type}
@@ -9,6 +15,11 @@ export default function NormalInput({ formData, handleChange, inputName, type, n
         onChange={handleChange}
         required
       />
-    </>
+      <div className={name === "avatar" ? styles.disable : styles.requairements }>
+        <Requairements />
+      </div>
+      {/* */}
+    </div>
   );
 }
+

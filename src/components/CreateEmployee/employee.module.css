@@ -11,20 +11,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 200;
 }
 
 .modal {
-  position: relative;
+  position: fixed;
   background: white;
   border-radius: 10px;
   width: 913px; 
-  height: 766px;  
+  max-height: 766px;  
   padding: 40px 50px 60px 50px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   top: 118px;
   display: flex;
   flex-direction: column;
   gap: 37px; 
+  z-index: 1000;
 }
 
 .closeXBtn {
@@ -70,6 +72,9 @@ form {
   gap: 10px;
   width: 100%;
   margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .inputRow {
@@ -78,60 +83,7 @@ form {
   width: 100%;
   justify-content: space-between;
 }
-.singleInputCon {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 385px;
-}
-label {
-  font-size: 14px;
-  color: var(--grayShades-color);
-}
-input, select {
-  padding: 12px;
-  border: 1px solid var(--gray-color);
-  border-radius: 10px;
-  width: 100%;
-  font-size: 14px;
-  font-weight: 400;
-  box-sizing: border-box;
-}
-select {
-  margin-top: 10px;
-  width: 50%;
-  display: block;
-  outline: none;
-  cursor: pointer;
-}
 
-.requairements {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  font-size: 12px;
-  color: var(--grayShades-color);
-}
-
-.avatarContainer {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.avatarContainer input {
-  cursor:pointer;
-  padding: 10px;
-  border: 2px dashed  var(--gray-color);
-  border-radius: 10px;
-  font-size: 16px;
-  height: 120px;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
 
 .buttonsContainer {
   display: flex;

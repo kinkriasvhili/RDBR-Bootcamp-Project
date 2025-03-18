@@ -16,7 +16,7 @@ export default function CreateEmployee({ employees, setEmployees }) {
 
   return (
     <>
-    {/* style={{ backgroundColor: "white", border}} */}
+
       <button  onClick={handleClick} className={styles.buttonLeft}>
         თანამშრომლის შექმნა
       </button>
@@ -27,13 +27,7 @@ export default function CreateEmployee({ employees, setEmployees }) {
         EmployeeAdd={handleEmployeeAdded}
       />
 
-      {/* <ul>
-        {employees.map((emp) => (
-          <li key={emp.id}>
-            {emp.name} {emp.surname}
-          </li>
-        ))}
-      </ul> */}
+      
     </>
   );
 }

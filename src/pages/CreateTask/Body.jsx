@@ -35,10 +35,9 @@ export default function Body() {
             formData={formData} 
             handleChange={handleChange} 
             name="title"
-            type="text"/>
-          <Requairements />
+            type="text"
+            />
        </form>
-       
     </div>
   )
 }
