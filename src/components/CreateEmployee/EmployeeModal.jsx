@@ -83,22 +83,25 @@ export default function EmployeeModal({
                   formData={formData} 
                   handleChange={handleChange} 
                   name="name"
-                  type="text"/>
+                  type="text"
+                  location="employeeModal"/>
                 
                 <NormalInput 
                   inputName='გვარი'  
                   formData={formData} 
                   handleChange={handleChange} 
                   name="surname"
-                  type="text"/>
+                  type="text"
+                  location="employeeModal"/>
               </div>
               <NormalInput 
                 inputName='ავატარი'  
                 formData={null}
                 handleChange={handleFileChange} 
                 name="avatar"
-                type="file"/>
-              <Department />
+                type="file"
+                location="employeeModal"/>
+              <Department selectName="დეპარტამენტი*" />
             </div>
             
             <div className={styles.buttonsContainer}>

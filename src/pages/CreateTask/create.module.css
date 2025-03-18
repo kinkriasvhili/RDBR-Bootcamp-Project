@@ -9,9 +9,49 @@
   font-weight: 600;
   font-size: 34px;
   color: var(--grayShades-color);
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .body {
-  color: red;
-  padding: 40px 0 0 40px;
+  border: 0.3px solid var(--gray-color);
+  padding: 30px 70px 120px 70px;
+  border-radius: 4px;
+  max-height: 958px;
+  margin-top: 20px;
+  background-color: rgb(250, 250, 250);
+
+}
+.inputRow {
+  position: relative;
+  display: flex;
+  width: 1261px;
+  justify-content: start;
+  gap: 200px;
+  margin: 20px 0;
+}
+.department {
+  width: 550px;
+  height: 108px;
+  margin: 0;
+}
+.department select{
+  width: 100%;
+  margin-top: 8px;
+}
+
+.miniRow {
+  display: flex;
+  width: 550px;
+  gap: 40px;
+}
+.buttonContainer {
+  width: 1261px;
+  text-align: end;
+}
+.buttonContainer button {
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+.createTaskButton:hover {
+  background-color: white;
+  color: var(--primary-color);
 }

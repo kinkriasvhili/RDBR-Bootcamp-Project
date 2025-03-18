@@ -9,9 +9,10 @@ label {
   font-size: 14px;
   color: var(--grayShades-color);
 }
-input, select {
+
+.calendarInput, input, select {
   padding: 12px;
-  border: 1px solid var(--gray-color);
+  border: 1px solid #DEE2E6;
   border-radius: 10px;
   width: 100%;
   font-size: 14px;
@@ -45,7 +46,7 @@ select {
 .avatarContainer input {
   cursor:pointer;
   padding: 10px;
-  border: 2px dashed  var(--gray-color);
+  border: 2px dashed  var(--grayLightShades-color);
   border-radius: 10px;
   font-size: 16px;
   height: 120px;
@@ -56,4 +57,24 @@ select {
 
 .disable {
   display: none;
+}
+
+.calendarContainer,
+.titleContainer {
+  min-width: 550px;
+  min-height: 108px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+.describeInp {
+  height: 113px;
+  width: 550px;
+}
+
+.calendarInput {
+  width: 60%;
 }
