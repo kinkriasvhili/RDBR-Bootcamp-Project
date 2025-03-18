@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import EmployeeModal from "./EmployeeModal";
-import styles from "./employee.module.css";
+import styles from "../nav.module.css";
+
 
 export default function CreateEmployee({ employees, setEmployees }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,7 +16,8 @@ export default function CreateEmployee({ employees, setEmployees }) {
 
   return (
     <>
-      <button onClick={handleClick} className={styles.buttonLeft}>
+    {/* style={{ backgroundColor: "white", border}} */}
+      <button  onClick={handleClick} className={styles.buttonLeft}>
         თანამშრომლის შექმნა
       </button>
 
