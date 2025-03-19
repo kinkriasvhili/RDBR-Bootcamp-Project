@@ -1,4 +1,4 @@
-import { api, apiToken } from "../../../App";
+import { api, apiToken } from "./App";
 
 
 export async function fetchData(endPointType, setData) {

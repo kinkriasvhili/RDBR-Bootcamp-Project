@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./filter.module.css";
-import { fetchData, fetchEmployees } from "./fetchData.js";
+import { fetchData, fetchEmployees } from "../../../fetchData.js";
 export default function FilterModal({
   isOpen,
   onClose,
@@ -16,7 +16,6 @@ export default function FilterModal({
       return;
     } else  if (endPointType == "employees") {
       fetchEmployees(setEmployees, endPointType, employees)
-      console.log(employees)
     } else if  (endPointType != "employees") {
       fetchData(endPointType, setData);
     }

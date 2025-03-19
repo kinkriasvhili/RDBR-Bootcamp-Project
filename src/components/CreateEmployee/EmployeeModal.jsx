@@ -1,6 +1,6 @@
 import { useState, useReducer } from "react";
 import styles from "./employee.module.css";
-import { api, apiToken } from "../../App"; // Import API details
+import { api, apiToken } from "../../App"; 
 import closeBtn from '../../images/Cancel.png'
 import Department from "../inputs/Department";
 import NormalInput from "../inputs/Normal";
@@ -31,14 +31,17 @@ export default function EmployeeModal({
     department_id: 1
   })
   const handleChange = (e) => {
-    dispatch({type: "CHANGE", field: e.target.name, value: e.target.value})
+    console.log(e.target)
+    if (e.target.name === "avatar") {
+      dispatch({ type: "CHANGE_FILE", file: e.target.value });
+    } else {
+      dispatch({ type: "CHANGE", field: e.target.name, value: e.target.value });
+    }
   };
-
-  const handleFileChange = (e) => {
-    dispatch({type: "CHANGE_FILE", file: e.target.files[0]})
-  };
+  
 
   const handleSubmit = async (e) => {
+    console.log('submit')
     e.preventDefault();
 
     const data = new FormData();
@@ -48,14 +51,14 @@ export default function EmployeeModal({
     data.append("department_id", formData.department_id);
 
     try {
-      const response = await fetch(`${api}/employees`, {
+      console.log(apiToken)
+      const response = await fetch(`api/employees`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${apiToken}`,
         },
         body: data,
       });
-
       if (!response.ok) throw new Error("Failed to create employee");
 
       const newEmployee = await response.json();
@@ -97,7 +100,7 @@ export default function EmployeeModal({
               <NormalInput 
                 inputName='ავატარი'  
                 formData={null}
-                handleChange={handleFileChange} 
+                handleChange={handleChange} 
                 name="avatar"
                 type="file"
                 location="employeeModal"/>
