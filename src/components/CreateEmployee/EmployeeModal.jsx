@@ -1,10 +1,9 @@
 import { useState, useReducer } from "react";
 import styles from "./employee.module.css";
-import { api, apiToken } from "../../App"; 
+import { putEmployeesData } from "../../fetchData.js";
 import closeBtn from '../../images/Cancel.png'
 import Department from "../inputs/Department";
 import NormalInput from "../inputs/Normal";
-import Requairements from "../inputs/Requairements";
 
 const fromReducer = (state, action) => {
   switch (action.type) {
@@ -31,9 +30,8 @@ export default function EmployeeModal({
     department_id: 1
   })
   const handleChange = (e) => {
-    console.log(e.target)
     if (e.target.name === "avatar") {
-      dispatch({ type: "CHANGE_FILE", file: e.target.value });
+      dispatch({ type: "CHANGE_FILE", file: e.target.files[0] });
     } else {
       dispatch({ type: "CHANGE", field: e.target.name, value: e.target.value });
     }
@@ -41,33 +39,7 @@ export default function EmployeeModal({
   
 
   const handleSubmit = async (e) => {
-    console.log('submit')
-    e.preventDefault();
-
-    const data = new FormData();
-    data.append("name", formData.name);
-    data.append("surname", formData.surname);
-    data.append("avatar", formData.avatar);
-    data.append("department_id", formData.department_id);
-
-    try {
-      console.log(apiToken)
-      const response = await fetch(`api/employees`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiToken}`,
-        },
-        body: data,
-      });
-      if (!response.ok) throw new Error("Failed to create employee");
-
-      const newEmployee = await response.json();
-      EmployeeAdd(newEmployee); 
-      dispatch({ type: "RESET" });
-      closeModal();
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    
   };
 
   if (!isModalOpen) return null;
@@ -104,12 +76,23 @@ export default function EmployeeModal({
                 name="avatar"
                 type="file"
                 location="employeeModal"/>
-              <Department selectName="დეპარტამენტი*" />
+             <Department 
+                location="employeeModal"
+                selectName="დეპარტამენტი*"
+                endPointType={"departments"}
+                selfType="departments"
+                handleChange={handleChange}
+                name="department"
+              />
             </div>
             
             <div className={styles.buttonsContainer}>
               <button className={styles.cancelButton} onClick={closeModal}>გაუქმება</button>
-              <button className={styles.addEmployeeBtn} type="submit">დაამატე თანამშრომელი</button>
+              <button className={styles.addEmployeeBtn} onClick={(e)=> {
+                  e.preventDefault()
+                  putEmployeesData(formData, dispatch, closeModal)
+                }
+              }>დაამატე თანამშრომელი</button>
             </div>
           </form>
         </div>
@@ -117,3 +100,5 @@ export default function EmployeeModal({
     </div>
   );
 }
+
+

@@ -1,7 +1,9 @@
 import { api, apiToken } from "./App";
+import img from './images/Cancel.png'
 
 
 export async function fetchData(endPointType, setData) {
+    if (!endPointType) return;
     try {
         const url = `${api}/${endPointType}`;
         const res = await fetch(url);
@@ -30,21 +32,11 @@ export async function fetchEmployees(setEmployees, endPointType) {
 
         const data = await response.json();
         setEmployees(data);
-        console.log(data)
     } catch (error) {
         console.error("Error fetching employees:", error);
     }
 }
 
-// export async function fetchTasks(setTasks, endPointType) {
-//     try {
-//         console.log(endPointType)
-//         const url = `${api}/${endPointType}`
-//         console.log(url)
-//     } catch(error) {
-//         console.log(error)
-//     }
-// }
 
 
 export async function putTasksData(formData, setTasks) {
@@ -59,8 +51,6 @@ export async function putTasksData(formData, setTasks) {
     };
 
     try {
-        console.log("Sending request with data:", data);
-
         const response = await fetch("api/tasks", {
             method: "POST",
             headers: {
@@ -78,9 +68,40 @@ export async function putTasksData(formData, setTasks) {
             throw new Error(`Server Error (${response.status}): ${responseText}`);
         }
 
-        const newTask = JSON.parse(responseText); // Parse JSON manually
-        // setTasks((prevTasks) => [...prevTasks, newTask]);
-        // dispatch({ type: "RESET" });
+        const newTask = JSON.parse(responseText); 
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
+export async function putEmployeesData(formData, dispatch, closeModal) {
+    const data = new FormData();
+    data.append("name", formData.name);
+    data.append("surname", formData.surname);
+    data.append("avatar", formData.avatar);
+    data.append("department_id", "1");
+    console.log(data)
+    try {
+        console.log(apiToken)
+        const response = await fetch(`api/employees`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${apiToken}`,
+                Accept: "application/json",
+            },
+            body: data,
+        });
+        console.log(response)
+        
+        if (!response.ok) {
+            const errorText = await response.text(); 
+            throw new Error(`Failed to create employee: ${errorText}`);
+        }
+        console.log(response)
+        const newEmployee = await response.json();
+
+        dispatch({ type: "RESET" });
+        closeModal();
     } catch (error) {
         console.error("Error:", error);
     }

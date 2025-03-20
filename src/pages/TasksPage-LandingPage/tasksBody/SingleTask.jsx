@@ -14,7 +14,7 @@ export default function SingleTask({task, color, index}) {
             {task.priority.name}
           </button>
           <button className={styles.department}>
-            {console.log(task.department)}
+            დიზაინი
           </button>
         </div>
         <div className={styles.dueData}>

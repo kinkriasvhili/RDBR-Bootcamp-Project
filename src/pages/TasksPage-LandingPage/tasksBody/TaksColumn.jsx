@@ -23,7 +23,7 @@ export default function TaskColumn({title, color}) {
       <button className={`${styles[`${color}-TaskColumnButton`]} ${styles.taskColumnButton}`}>
         {title}
       </button>
-      {tasks.length > 0 ? (
+      {tasks? (
         tasks.map((task, index)=> {
           if(title == task.status.name) {
             return (
