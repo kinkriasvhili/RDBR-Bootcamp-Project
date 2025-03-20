@@ -7,6 +7,7 @@
   border: 1px solid var(--gray-color);
   display: flex;
   align-items: center;
+  z-index: 50;
 }
 .filterContainer ul {
   padding: 2px;

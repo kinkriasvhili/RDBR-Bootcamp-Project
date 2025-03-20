@@ -42,6 +42,12 @@
   --gray-color: #dee2e6;
   --grayShades-color: #0d0f10;
   --grayLightShades-color: #6C757D;
+  --green-color: #08A508;
+  --red-color: #FA4D4D;
+  --lightpink-color:#FF66A8;
+  --lightorange-color: #FD9A6A;
+  --lightblue-color: #89B6FF;
+  --lightyellow-color: #FFD86D;
 }
 
 body {

@@ -30,10 +30,22 @@ export async function fetchEmployees(setEmployees, endPointType) {
 
         const data = await response.json();
         setEmployees(data);
+        console.log(data)
     } catch (error) {
         console.error("Error fetching employees:", error);
     }
 }
+
+// export async function fetchTasks(setTasks, endPointType) {
+//     try {
+//         console.log(endPointType)
+//         const url = `${api}/${endPointType}`
+//         console.log(url)
+//     } catch(error) {
+//         console.log(error)
+//     }
+// }
+
 
 export async function putTasksData(formData, setTasks) {
     const data = {
