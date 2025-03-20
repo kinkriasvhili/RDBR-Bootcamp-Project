@@ -6,11 +6,15 @@ import { putTasksData } from '../../fetchData';
 import { useState } from 'react';
 
 export default function Body({ formData, dispatch }) {
-  const handleChange = (e) => {
-    dispatch({ type: "CHANGE", field: e.target.name, value: e.target.value });
-  };
-
   const [endPointType, setEndPointType] = useState("");
+  const [task, setTasks] = useState([])
+
+  const handleChange = (e) => {
+    console.log(e.target.name)
+    console.log(e.target.value)
+    dispatch({ type: "CHANGE", field: e.target.name, value: e.target.value });
+    console.log(formData)
+  };
 
 
   return (
@@ -33,6 +37,8 @@ export default function Body({ formData, dispatch }) {
             selectName="დეპარტამენტი*"
             endPointType={endPointType}
             selfType="departments"
+            handleChange={handleChange}
+            name="department"
           />
           </span>
           
@@ -54,6 +60,8 @@ export default function Body({ formData, dispatch }) {
               selectName="პასუხისმბგებელი თანამშრომელი*"
               endPointType={endPointType}
               selfType="employees"
+              handleChange={handleChange}
+              name="employee"
             />
           </span>
 
@@ -69,6 +77,9 @@ export default function Body({ formData, dispatch }) {
                 selectName="პრიორიტეტი*"
                 endPointType={endPointType}
                 selfType="priorities"
+                handleChange={handleChange}
+                name="priority"
+
               />
             </span>
             
@@ -80,15 +91,22 @@ export default function Body({ formData, dispatch }) {
                 selectName="სტატუსი*"
                 endPointType={endPointType}
                 selfType="statuses"
+                handleChange={handleChange}
+                name="status"
               />
             </span>
             
           </div>
-          <Calendar location="createTask" calendarName="დედლაინი*" />
+          <Calendar 
+            name="due_data" 
+            location="createTask" 
+            calendarName="დედლაინი*" 
+            handleChange={handleChange}/>
         </div>
         <div className={styles.buttonContainer}>
           <button
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               putTasksData(formData);
             }}
             className={styles.createTaskButton}

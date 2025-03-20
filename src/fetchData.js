@@ -10,7 +10,6 @@ export async function fetchData(endPointType, setData) {
         }
 
         const jsonRes = await res.json();
-        console.log(jsonRes)
         setData(jsonRes);
     } catch (error) {
         console.error("Error fetching data:", error);
@@ -30,21 +29,47 @@ export async function fetchEmployees(setEmployees, endPointType) {
         if (!response.ok) throw new Error("Failed to fetch employees");
 
         const data = await response.json();
+        console.log(data)
         setEmployees(data);
     } catch (error) {
         console.error("Error fetching employees:", error);
     }
 }
 
-export function putTasksData(formData) {
-    const endPointType = "task"
-    const data = new FormData()
-    data.append("name", formData.title)
-    data.append("description", formData.describtion)
-    data.append("due_data", formData.deadline)
-    data.append("status_id", formData.status)
-    data.append("employee_id", formData.ResponsibleEmployee)
-    data.append("priority_id", formData.priority)
+export async function putTasksData(formData, setTasks) {
+    const data = {
+        name: "შექმენით readme ფაილი",
+        description: "აღწერეთ შესრულებული დავალება რიდმი ფაილით",
+        due_date: "2025-12-31",
+        status_id: 1,
+        employee_id: 1,
+        priority_id: 1
+    };
 
+    try {
+        console.log("Sending request with data:", data);
 
+        const response = await fetch("api/tasks", {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${apiToken}`,
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+
+        const responseText = await response.text(); 
+        console.log("Raw response:", responseText); // ✅ Log response
+
+        if (!response.ok) {
+            throw new Error(`Server Error (${response.status}): ${responseText}`);
+        }
+
+        const newTask = JSON.parse(responseText); // Parse JSON manually
+        // setTasks((prevTasks) => [...prevTasks, newTask]);
+        // dispatch({ type: "RESET" });
+    } catch (error) {
+        console.error("Error:", error);
+    }
 }

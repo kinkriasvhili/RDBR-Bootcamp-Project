@@ -6,18 +6,30 @@ const reducer = (state, action) => {
   switch (action.type){
     case "CHANGE":
       return {...state, [action.field]: action.value}
+    case "RESET":
+      return {
+        id: 1,
+        title: "",
+        describtion: "",
+        due_data: "",
+        status: 'დასაწყები',
+        priority: "საშუალო",
+        department: "",
+        employee: "",
+      }
   }
 }
 
 export default function CreateTask() {
     const [formData, dispatch] = useReducer(reducer, {
-        title: "",
-        department_id: 1,
-        describtion: "",
-        ResponsibleEmployee: "",
-        priority: "საშუალო",
+        id: 1,
+        title: "me",
+        describtion: "me",
+        due_data: "2025-03-26",
         status: 'დასაწყები',
-        deadline: "",
+        priority: "საშუალო",
+        department: "1",
+        employee: "22",
       })  
     return (
         <div className={styles.CreateTaskContainer}>
