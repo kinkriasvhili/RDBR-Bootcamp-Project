@@ -2,6 +2,7 @@ import styles from "./taskBody.module.css"
 import { useState, useEffect } from "react"
 import { fetchEmployees } from "../../../fetchData"
 import SingleTask from "./SingleTask"
+import { Link } from "react-router-dom"
 
 export default function TaskColumn({title, color}) {
   const [tasks, setTasks] = useState([])
@@ -28,7 +29,10 @@ export default function TaskColumn({title, color}) {
           if(title == task.status.name) {
             return (
               <div key={index}>
-                <SingleTask task={task} index={index} color={color} />
+                <Link style={{"textDecoration": "none"}} to="/TaskDetails" state={{ task }}>
+                  <SingleTask task={task} index={index} color={color} />
+                </Link>
+                
               </div>)
           }
           

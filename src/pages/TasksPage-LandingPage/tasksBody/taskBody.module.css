@@ -147,43 +147,6 @@
 }
 
 /* first */
-.leftSide {
-  display: flex;
-  gap: 5px;
-}
-.priority {
-  background-color: inherit;
-  border: 1px solid var(--orange-color);
-  color: var(--orange-color);
-  padding: 4px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.department {
-  background-color: var(--lightpink-color);
-  border-radius: 15px;
-  padding: 5px 9px;
-  border: 1px solid var(--lightpink-color);
-}
+/* imported component*/
 
 /* priority */
-.დაბალიColor {
-  border-color: var(--green-color);
-  color: var(--green-color);
-}
-
-.საშუალოColor {
-  border-color: var(--yellow-color);
-  color: var(--yellow-color);
-}
-
-.მაღალიColor {
-  border-color: var(--red-color);
-  color: var(--red-color);
-}
-.dueData {
-  /* border: 1px solid red; */
-  font-size: 14px;
-}

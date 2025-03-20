@@ -2,7 +2,6 @@ export default function departmentName(task) {
   if (!task || !task.department || !task.department.name) return "";
 
   let departmentName = "";
-  console.log(task.department.name)
   switch (task.department.name) {
     case "მედიის დეპარტამენტი":
       departmentName = "მედია";

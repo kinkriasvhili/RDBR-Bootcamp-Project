@@ -1,0 +1,21 @@
+.taskDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 40px 120px 0 120px;
+  gap: 40px;
+  border: 1px solid red;
+  
+}
+.taskDetailsComponents {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.taskCommentContainer {
+  border: 1px solid blue;
+  position: relative;
+}
+.taskInformationContainer {
+  border: 1px solid black;
+}

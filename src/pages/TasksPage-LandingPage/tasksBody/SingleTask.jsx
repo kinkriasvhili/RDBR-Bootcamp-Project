@@ -2,6 +2,7 @@ import styles from './taskBody.module.css'
 import profileImage from '../../../images/profile-pic.jpeg'
 import commentImage from '../../../images/Vector.png'
 import departmentName from './departmentName'
+import TaskHeader from '../../../components/taskHeader/TaskHeader';
 
 export default function SingleTask({task, color, index}) {
   // Convert ISO date to Georgian format
@@ -18,15 +19,7 @@ export default function SingleTask({task, color, index}) {
   return (
     <div className={`${styles[`${color}-singleTask`]} ${styles.singleTask}`}>
       <div className={`${styles.taskRow} ${styles.firstRow}`}>
-        <div className={styles.leftSide}>
-          <button className={`${styles.priority} ${styles[`${task.priority.name}Color`]}`}>
-            <img src={task.priority.icon} style={{ width: "20px", height: "20px" }} />
-            {task.priority.name}
-          </button>
-          <button className={styles.department}>
-            {departmentName(task)}
-          </button>
-        </div>
+        <TaskHeader task={task}/>
         <div className={styles.dueData}>
           <span className={styles.dueData}>
             {formatDate(task.due_date)}
