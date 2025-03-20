@@ -21,7 +21,7 @@ export default function NormalInput({ formData, handleChange, inputName, type, n
         name={name}
         onChange={(e) => {
           if (type === "file") {
-            handleChange(e); // Send the file object
+            handleChange(e);
           } else {
             handleChange(e);
           }

@@ -29,7 +29,6 @@ export async function fetchEmployees(setEmployees, endPointType) {
         if (!response.ok) throw new Error("Failed to fetch employees");
 
         const data = await response.json();
-        console.log(data)
         setEmployees(data);
     } catch (error) {
         console.error("Error fetching employees:", error);
@@ -38,12 +37,13 @@ export async function fetchEmployees(setEmployees, endPointType) {
 
 export async function putTasksData(formData, setTasks) {
     const data = {
-        name: "შექმენით readme ფაილი",
-        description: "აღწერეთ შესრულებული დავალება რიდმი ფაილით",
-        due_date: "2025-12-31",
-        status_id: 1,
-        employee_id: 1,
-        priority_id: 1
+        name: formData.title,
+        description: formData.describtion,
+        due_date: formData.due_data,
+        status_id: formData.status,
+        employee_id: formData.employee,
+        priority_id: formData.priority,
+        department_id: formData.department
     };
 
     try {

@@ -26,7 +26,7 @@ export default function Department({location, selectName, endPointType, selfType
             </option>
           ))
         ) : (
-          <option value="option20">..loading</option>
+          <option></option>
         )}
         
       </select>

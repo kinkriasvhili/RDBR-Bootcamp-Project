@@ -10,10 +10,10 @@ export default function Body({ formData, dispatch }) {
   const [task, setTasks] = useState([])
 
   const handleChange = (e) => {
-    console.log(e.target.name)
-    console.log(e.target.value)
+    // console.log(e.target.name)
+    // console.log(e.target.value)
     dispatch({ type: "CHANGE", field: e.target.name, value: e.target.value });
-    console.log(formData)
+    // console.log(formData)
   };
 
 
@@ -108,6 +108,7 @@ export default function Body({ formData, dispatch }) {
             onClick={(e) => {
               e.preventDefault();
               putTasksData(formData);
+              console.log(formData)
             }}
             className={styles.createTaskButton}
           >

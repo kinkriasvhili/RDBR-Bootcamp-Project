@@ -8,28 +8,26 @@ const reducer = (state, action) => {
       return {...state, [action.field]: action.value}
     case "RESET":
       return {
-        id: 1,
         title: "",
         describtion: "",
         due_data: "",
-        status: 'დასაწყები',
-        priority: "საშუალო",
-        department: "",
-        employee: "",
+        status: null,
+        priority: null,
+        department: null,
+        employee: null,
       }
   }
 }
 
 export default function CreateTask() {
     const [formData, dispatch] = useReducer(reducer, {
-        id: 1,
-        title: "me",
-        describtion: "me",
-        due_data: "2025-03-26",
-        status: 'დასაწყები',
-        priority: "საშუალო",
-        department: "1",
-        employee: "22",
+      title: "",
+      describtion: "",
+      due_data: "",
+      status: null,
+      priority: null,
+      department: null,
+      employee: null,
       })  
     return (
         <div className={styles.CreateTaskContainer}>
