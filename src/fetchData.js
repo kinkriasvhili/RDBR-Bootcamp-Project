@@ -40,6 +40,7 @@ export async function fetchEmployees(setEmployees, endPointType) {
 
 
 export async function putTasksData(formData, setTasks) {
+    console.log(formData)
     const data = {
         name: formData.title,
         description: formData.describtion,
@@ -49,6 +50,7 @@ export async function putTasksData(formData, setTasks) {
         priority_id: formData.priority,
         department_id: formData.department
     };
+
 
     try {
         const response = await fetch("api/tasks", {

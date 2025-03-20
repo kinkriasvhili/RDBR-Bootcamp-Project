@@ -1,20 +1,33 @@
 export default function departmentName(task) {
-  let departmentName = ""
+  if (!task || !task.department || !task.department.name) return "";
+
+  let departmentName = "";
+  console.log(task.department.name)
   switch (task.department.name) {
     case "მედიის დეპარტამენტი":
-      departmentName = "მედია"
-    case "ადმინსტაციის დეპარტამენტი":
-      departmentName = "ადმინისტრაცია"
+      departmentName = "მედია";
+      break;
+    case "ადმინისტრაციის დეპარტამენტი":
+      departmentName = "ადმინისტრაცია";
+      break;
     case "ადამიანური რესურსების დეპარტამენტი":
-      departmentName = "რესურსები"
+      departmentName = "რესურსები";
+      break;
     case "ფინანსების დეპარტამენტი":
-      departmentName = "ფინანსები"
+      departmentName = "ფინანსები";
+      break;
     case "გაყიდვები და მარკეტინგის დეპარტამენტი":
-      departmentName = "გაყიდ & მარკეტ"
+      departmentName = "გაყიდ & მარკეტ";
+      break;
     case "ლოჯოსტიკის დეპარტამენტი":
-      departmentName = "ლოჯოსტიკა"
+      departmentName = "ლოჯოსტიკა";
+      break;
     case "ტექნოლოგიების დეპარტამენტი":
-      departmentName = "ტექნოლოგია"
+      departmentName = "ტექნოლოგია";
+      break;
+    default:
+      departmentName = "დეპარტამენტი"; 
   }
+
   return departmentName;
 }

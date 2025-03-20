@@ -4,9 +4,19 @@ import commentImage from '../../../images/Vector.png'
 import departmentName from './departmentName'
 
 export default function SingleTask({task, color, index}) {
-  
-  return(
-    <div  className={`${styles[`${color}-singleTask`]} ${styles.singleTask}`}>
+  // Convert ISO date to Georgian format
+  const formatDate = (isoString) => {
+    const date = new Date(isoString);
+    return date.toLocaleDateString("ka-GE", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+  };
+
+
+  return (
+    <div className={`${styles[`${color}-singleTask`]} ${styles.singleTask}`}>
       <div className={`${styles.taskRow} ${styles.firstRow}`}>
         <div className={styles.leftSide}>
           <button className={`${styles.priority} ${styles[`${task.priority.name}Color`]}`}>
@@ -14,27 +24,22 @@ export default function SingleTask({task, color, index}) {
             {task.priority.name}
           </button>
           <button className={styles.department}>
-            დიზაინი
+            {departmentName(task)}
           </button>
         </div>
         <div className={styles.dueData}>
-          <span>
-            {new Date(task.due_data).toLocaleDateString()}
+          <span className={styles.dueData}>
+            {formatDate(task.due_date)}
           </span>
-          
         </div>
       </div>
       <div className={`${styles.taskRow} ${styles.secondRow}`}>
-        <p className={styles.taskTitle}>
-          {task.name}
-        </p>
-        <p className={styles.taskDescribtion}>
-          {task.description}
-        </p>
+        <p className={styles.taskTitle}>{task.name}</p>
+        <p className={styles.taskDescribtion}>{task.description}</p>
       </div>
       <div className={`${styles.taskRow} ${styles.thirdtRow}`}>
         <div>
-          <img className={styles.imgProfile} src={task.employee.icon} alt="" />
+          <img className={styles.imgProfile} src={task.employee.avatar} alt="" />
         </div>
         <div className={styles.commentContainer}>
           <img className={styles.imgComment} src={commentImage} alt="" />
@@ -42,8 +47,9 @@ export default function SingleTask({task, color, index}) {
         </div>
       </div>
     </div>
-  )
+  );
 }
+
 
 /**
  * 
