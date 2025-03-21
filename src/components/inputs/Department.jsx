@@ -12,6 +12,7 @@ export default function Department({
   name,
   value,
   isSelectDisabled,
+  filterEmployee,
   formData,
 }) {
   const [data, setData] = useState(null);
@@ -31,7 +32,7 @@ export default function Department({
     if (endPointType === selfType && endPointType !== 'employees') {
       fetchData(endPointType, setData);
     } else if (endPointType === 'employees' && endPointType === selfType) {
-      fetchEmployees(setData, endPointType, formData);
+      fetchEmployees(setData, endPointType, filterEmployee, location, formData);
 
     }
   }, [endPointType, selfType]);

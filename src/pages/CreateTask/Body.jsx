@@ -43,6 +43,7 @@ export default function Body({ formData, dispatch }) {
             name="title"
             type="text"
             location="createTask"
+            value={formData.title}
           />
           <span onClick={()=> {
             setEndPointType("departments");
@@ -67,6 +68,8 @@ export default function Body({ formData, dispatch }) {
             name="describtion"
             type="text"
             location="createTask"
+            value={formData.describtion}
+
           />
           <span onClick={()=> {
             setEndPointType("employees");
@@ -79,7 +82,9 @@ export default function Body({ formData, dispatch }) {
               handleChange={handleChange}
               name="employee"
               isSelectDisabled={isSelectDisabled}
+              filterEmployee={'filterTrue'}
               formData={formData}
+
             />
           </span>
 
@@ -98,6 +103,7 @@ export default function Body({ formData, dispatch }) {
                 handleChange={handleChange}
                 name="priority"
                 isSelectDisabled={false}
+
               />
             </span>
             

@@ -1,7 +1,7 @@
 import styles from './inputs.module.css';
 import Requairements from './Requairements';
 
-export default function NormalInput({ formData, handleChange, inputName, type, name, location }) {
+export default function NormalInput({ formData, handleChange, inputName, type, name, location,value }) {
   let containerClassNme = "";
   
   if (name === "avatar" && location === "employeeModal") {
@@ -19,6 +19,7 @@ export default function NormalInput({ formData, handleChange, inputName, type, n
         className={inputName === "აღწერა" ? styles.describeInp : ""}
         type={type}
         name={name}
+        value={value}
         onChange={(e) => {
           if (type === "file") {
             handleChange(e);

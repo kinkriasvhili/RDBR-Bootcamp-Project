@@ -17,7 +17,7 @@ export async function fetchData(endPointType, setData) {
     }
 }
 
-export async function fetchEmployees(setEmployees, endPointType, formData) {
+export async function fetchEmployees(setEmployees, endPointType, filterEmployee, location, formData) {
     try {
         const response = await fetch(`${api}/${endPointType}`, {
             method: "GET",
@@ -32,11 +32,12 @@ export async function fetchEmployees(setEmployees, endPointType, formData) {
         const data = await response.json();
         setEmployees(data);
         // console.log(data)
-        if (formData) {
+        if (filterEmployee=="filterTrue" & location=="createTask") {
             console.log(endPointType == "employees")
             const filteredData = data.filter(item => item.department.id == formData.department_id);
             setEmployees(filteredData); 
         }
+        // console.log(data)
 
     } catch (error) {
         console.error("Error fetching employees:", error);
