@@ -61,7 +61,6 @@ export default function Department({
         
         <option value="" disabled className={styles.chooseOption}>
           {value ? value : "აირჩიე"}
-          {console.log(value)}
         </option>
         {filteredData.map((item) => (
           <option className={styles.option} value={item.id} key={item.id}>

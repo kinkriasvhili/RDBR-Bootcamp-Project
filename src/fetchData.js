@@ -145,4 +145,56 @@ export async function updateTaskStatus(taskId, statusId) {
     }
 }
 
+export async function postComments(task, text, parentId) {
+    const data = {
+        text: text,
+        parent_id: parentId
+    };
+    console.log(task.id)
+    // console.log(data)
 
+    try {
+        const response = await fetch(`${api}/tasks/${task.id}/comments`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${apiToken}`,
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+
+        const responseText = await response.text(); 
+        console.log("Raw response:", responseText); // ✅ Log response
+
+        if (!response.ok) {
+            throw new Error(`Server Error (${response.status}): ${responseText}`);
+        }
+
+        const newTask = JSON.parse(responseText);
+        console.log(newTask)
+        console.log(task.id)
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+export async function getComments({task, getComments}) {
+    try {
+        const response = await fetch(`${api}/tasks/${task.id}/comments`, {
+            method: "GET",
+            headers: {
+            Authorization: `Bearer ${apiToken}`,
+            Accept: "application/json",
+            },
+        });
+
+        if (!response.ok) throw new Error("Failed to fetch employees");
+
+        const data = await response.json();
+        getComments(data)
+        // console.log(data)
+        
+    } catch (error) {
+        console.error("Error fetching employees:", error);
+    }
+}
