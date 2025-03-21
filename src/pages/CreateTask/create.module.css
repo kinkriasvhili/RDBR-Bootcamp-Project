@@ -82,3 +82,11 @@
   background-color: gray;
   opacity: 0.7;
 }
+.buttonClass {
+  opacity: 0.8;
+  cursor: default;
+}
+.buttonClass:hover {
+  background-color: var(--primary-color);
+  color: white;
+}

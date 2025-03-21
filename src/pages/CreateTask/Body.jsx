@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 export default function Body({ formData, dispatch }) {
   const [endPointType, setEndPointType] = useState("");
   const [isSelectDisabled, setIsSelectDisabled] = useState(true)
-  
+  const [btnDisable, setBtnDisable] = useState(true)
   
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,8 +18,13 @@ export default function Body({ formData, dispatch }) {
     }
 
   };
-  
+  useEffect(() => {
+    const allFieldsFilled = Object.values(formData).every((value) => value.trim() !== "");
+    setBtnDisable(!allFieldsFilled);
+    
+  }, [formData]);
 
+  
   
   const disabledInput = (departmentValue) => {
     // Check if the department value is not null
@@ -135,7 +140,8 @@ export default function Body({ formData, dispatch }) {
               putTasksData(formData);
               dispatch({ type: "RESET" });
             }}
-            className={styles.createTaskButton}
+            disabled={btnDisable}
+            className={`${styles.createTaskButton} ${btnDisable ? styles.buttonClass : ''}`}
           >
             დავალების შექმნა
           </button>

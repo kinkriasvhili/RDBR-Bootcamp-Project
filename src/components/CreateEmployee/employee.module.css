@@ -104,12 +104,12 @@ button.cancelButton:hover {
   color: white;
 }
 
-button.addEmployeeBtn {
+.addEmployeeBtn {
   border: 1px solid var(--primary-color);
   background-color: var(--primary-color);
   transition: 0.2s;
 }
-button.addEmployeeBtn:hover {
+.addEmployeeBtn:hover {
   background-color: inherit;
   color: var(--primary-color);
 }
@@ -125,4 +125,16 @@ select {
 select option {
   font-size: 16px;
   color: var(--black-color);
+}
+
+.disabledButton {
+  opacity: 0.6;
+  cursor: default;
+  background-color: var(--primary-color); /* Keep the same background */
+  color: white; /* Ensure text color remains */
+}
+
+.disabledButton:hover {
+  background-color: var(--primary-color); /* Prevent color change */
+  color: white;
 }
