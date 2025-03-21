@@ -1,5 +1,4 @@
 import { api, apiToken } from "./App";
-import img from './images/Cancel.png'
 
 
 export async function fetchData(endPointType, setData) {
@@ -18,7 +17,7 @@ export async function fetchData(endPointType, setData) {
     }
 }
 
-export async function fetchEmployees(setEmployees, endPointType) {
+export async function fetchEmployees(setEmployees, endPointType, formData) {
     try {
         const response = await fetch(`${api}/${endPointType}`, {
             method: "GET",
@@ -32,6 +31,13 @@ export async function fetchEmployees(setEmployees, endPointType) {
 
         const data = await response.json();
         setEmployees(data);
+        // console.log(data)
+        if (formData) {
+            console.log(endPointType == "employees")
+            const filteredData = data.filter(item => item.department.id == formData.department_id);
+            setEmployees(filteredData); 
+        }
+
     } catch (error) {
         console.error("Error fetching employees:", error);
     }
@@ -40,7 +46,6 @@ export async function fetchEmployees(setEmployees, endPointType) {
 
 
 export async function putTasksData(formData, setTasks) {
-    console.log(formData)
     const data = {
         name: formData.title,
         description: formData.describtion,
@@ -48,9 +53,9 @@ export async function putTasksData(formData, setTasks) {
         status_id: formData.status,
         employee_id: formData.employee,
         priority_id: formData.priority,
-        department_id: formData.department
+        department_id: formData.department_id
     };
-
+    console.log(data)
 
     try {
         const response = await fetch("api/tasks", {
@@ -70,7 +75,8 @@ export async function putTasksData(formData, setTasks) {
             throw new Error(`Server Error (${response.status}): ${responseText}`);
         }
 
-        const newTask = JSON.parse(responseText); 
+        const newTask = JSON.parse(responseText);
+        console.log(newTask) 
     } catch (error) {
         console.error("Error:", error);
     }
@@ -81,10 +87,10 @@ export async function putEmployeesData(formData, dispatch, closeModal) {
     data.append("name", formData.name);
     data.append("surname", formData.surname);
     data.append("avatar", formData.avatar);
-    data.append("department_id", "1");
+    data.append("department_id", formData.department_id);
     console.log(data)
+
     try {
-        console.log(apiToken)
         const response = await fetch(`api/employees`, {
             method: "POST",
             headers: {
@@ -93,13 +99,11 @@ export async function putEmployeesData(formData, dispatch, closeModal) {
             },
             body: data,
         });
-        console.log(response)
         
         if (!response.ok) {
             const errorText = await response.text(); 
             throw new Error(`Failed to create employee: ${errorText}`);
         }
-        console.log(response)
         const newEmployee = await response.json();
 
         dispatch({ type: "RESET" });

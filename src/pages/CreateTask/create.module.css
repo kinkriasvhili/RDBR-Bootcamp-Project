@@ -67,3 +67,18 @@
 .option {
   cursor: pointer;
 }
+.dis select {
+  cursor: default;
+}
+.dis label {
+  opacity: 0.5;
+}
+
+.select:focus {
+  border-color: var(--primary-color);
+}
+
+.chooseOption {
+  background-color: gray;
+  opacity: 0.7;
+}

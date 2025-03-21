@@ -1,4 +1,4 @@
-import { useState, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import styles from "./employee.module.css";
 import { putEmployeesData } from "../../fetchData.js";
 import closeBtn from '../../images/Cancel.png'
@@ -12,7 +12,7 @@ const fromReducer = (state, action) => {
     case "CHANGE_FILE":
       return {...state, avatar: action.file};
     case 'RESET':
-      return {name: "", surname: "", avatar: null, department_id: 1};
+      return {name: "", surname: "", avatar: null, department_id: ""};
     default:
       return {state}
   }
@@ -27,7 +27,7 @@ export default function EmployeeModal({
     name: "",
     surname: "",
     avatar: null,
-    department_id: 1
+    department_id: ""
   })
   const handleChange = (e) => {
     if (e.target.name === "avatar") {
@@ -35,12 +35,11 @@ export default function EmployeeModal({
     } else {
       dispatch({ type: "CHANGE", field: e.target.name, value: e.target.value });
     }
+    console.log(formData)
   };
   
+  
 
-  const handleSubmit = async (e) => {
-    
-  };
 
   if (!isModalOpen) return null;
 
@@ -50,7 +49,7 @@ export default function EmployeeModal({
         <button className={styles.closeXBtn} onClick={closeModal}><img src={closeBtn} alt="" /></button>
         <div>
           <h2>თანამშრომლის დამატება</h2>
-          <form onSubmit={handleSubmit}>
+          <form>
             <div className={styles.inputContainer}>
               <div className={styles.inputRow}>
                 <NormalInput 
@@ -82,7 +81,7 @@ export default function EmployeeModal({
                 endPointType={"departments"}
                 selfType="departments"
                 handleChange={handleChange}
-                name="department"
+                name="department_id"
               />
             </div>
             

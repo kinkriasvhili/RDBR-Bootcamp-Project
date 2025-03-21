@@ -11,10 +11,10 @@ const reducer = (state, action) => {
         title: "",
         describtion: "",
         due_data: "",
-        status: null,
-        priority: null,
-        department: null,
-        employee: null,
+        status: "",
+        priority: "",
+        department_id: "",
+        employee: "",
       }
   }
 }
@@ -24,10 +24,10 @@ export default function CreateTask() {
       title: "",
       describtion: "",
       due_data: "",
-      status: null,
-      priority: null,
-      department: null,
-      employee: null,
+      status: "",
+      priority: "",
+      department_id: "",
+      employee: "",
       })  
     return (
         <div className={styles.CreateTaskContainer}>

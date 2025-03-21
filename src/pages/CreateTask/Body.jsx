@@ -3,15 +3,33 @@ import styles from './create.module.css'
 import Department from '../../components/inputs/Department';
 import Calendar from '../../components/inputs/Calendar';
 import { putTasksData } from '../../fetchData';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Body({ formData, dispatch }) {
   const [endPointType, setEndPointType] = useState("");
-  const [task, setTasks] = useState([])
-
+  const [isSelectDisabled, setIsSelectDisabled] = useState(true)
+  
+  
   const handleChange = (e) => {
-    dispatch({ type: "CHANGE", field: e.target.name, value: e.target.value });
+    const { name, value } = e.target;
+    dispatch({ type: "CHANGE", field: name, value });
+    if (name == "department_id") {
+      disabledInput(value);
+    }
+
   };
+  
+
+  
+  const disabledInput = (departmentValue) => {
+    // Check if the department value is not null
+    if (departmentValue) {
+      setIsSelectDisabled(false);
+    } else {
+      setIsSelectDisabled(true);
+    }
+  };
+  
 
 
   return (
@@ -35,7 +53,8 @@ export default function Body({ formData, dispatch }) {
             endPointType={endPointType}
             selfType="departments"
             handleChange={handleChange}
-            name="department"
+            name="department_id"
+            isSelectDisabled={false}
           />
           </span>
           
@@ -59,6 +78,8 @@ export default function Body({ formData, dispatch }) {
               selfType="employees"
               handleChange={handleChange}
               name="employee"
+              isSelectDisabled={isSelectDisabled}
+              formData={formData}
             />
           </span>
 
@@ -76,7 +97,7 @@ export default function Body({ formData, dispatch }) {
                 selfType="priorities"
                 handleChange={handleChange}
                 name="priority"
-
+                isSelectDisabled={false}
               />
             </span>
             
@@ -90,6 +111,7 @@ export default function Body({ formData, dispatch }) {
                 selfType="statuses"
                 handleChange={handleChange}
                 name="status"
+                isSelectDisabled={false}
               />
             </span>
             
@@ -106,7 +128,6 @@ export default function Body({ formData, dispatch }) {
               e.preventDefault();
               putTasksData(formData);
               dispatch({ type: "RESET" });
-              console.log(formData)
             }}
             className={styles.createTaskButton}
           >
@@ -117,3 +138,7 @@ export default function Body({ formData, dispatch }) {
     </div>
   );
 }
+
+
+  
+ 
