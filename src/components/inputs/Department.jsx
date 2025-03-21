@@ -15,6 +15,7 @@ export default function Department({
   filterEmployee,
   formData,
 }) {
+  
   const [data, setData] = useState(null);
   const [selectedValue, setSelectedValue] = useState(''); // Local state to manage selected value
 
@@ -59,7 +60,8 @@ export default function Department({
       >
         
         <option value="" disabled className={styles.chooseOption}>
-          აირჩიე
+          {value ? value : "აირჩიე"}
+          {console.log(value)}
         </option>
         {filteredData.map((item) => (
           <option className={styles.option} value={item.id} key={item.id}>

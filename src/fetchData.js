@@ -1,7 +1,7 @@
 import { api, apiToken } from "./App";
 
 
-export async function fetchData(endPointType, setData) {
+export async function fetchData(endPointType, setData, newStatusId) {
     if (!endPointType) return;
     try {
         const url = `${api}/${endPointType}`;
@@ -113,3 +113,36 @@ export async function putEmployeesData(formData, dispatch, closeModal) {
         console.error("Error:", error);
     }
 }
+
+
+
+export async function updateTaskStatus(taskId, statusId) {
+    try {
+        console.log(statusId)
+        const response = await fetch(`${api}/tasks/${taskId}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${apiToken}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                status_id: Number(statusId), // force it to be number
+            })
+        });
+
+        console.log(response);
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+
+        const updatedTask = await response.json();
+        console.log("Task updated successfully:", updatedTask);
+        return updatedTask;
+    } catch (error) {
+        console.error("Failed to update task status:", error);
+    }
+}
+
+

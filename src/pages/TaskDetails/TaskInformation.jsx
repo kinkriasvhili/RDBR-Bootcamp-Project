@@ -5,13 +5,15 @@ import calendarImg from '../../images/calendar.png'
 import InfoItem from './InfoItem'
 import Department from '../../components/inputs/Department'
 import { formatDate } from '../../components/date.js'
+import {  updateTaskStatus } from '../../fetchData.js'
 export default function TaskInformation({task}) {
-  
-  
-  
-  const handleChange = ()=> {
-    return;
-  }
+  const handleChange = async (event) => {
+    const newStatusId = event.target.value; 
+    await updateTaskStatus(task.id, newStatusId)
+
+  };
+
+  let value = task.status.name
   return (
     <div className={styles.taskInformationContainer}>
       <div className={styles.taskNamingConatiner}>
@@ -35,7 +37,7 @@ export default function TaskInformation({task}) {
                 selfType="statuses"
                 handleChange={handleChange}
                 name="status"
-                value={task.status.name}
+                value={value}
               />
             </div>
           </div>
