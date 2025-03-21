@@ -1,21 +1,113 @@
+@import url('../../general.css');
+
 .taskDetailsContainer {
   display: flex;
   flex-direction: column;
   position: relative;
   padding: 40px 120px 0 120px;
-  gap: 40px;
-  border: 1px solid red;
-  
+  gap: 20px;  
+}
+.taskCommentContainer {
+  border: 1px solid blue;
+  position: relative;
 }
 .taskDetailsComponents {
   display: flex;
   width: 100%;
   justify-content: space-between;
 }
-.taskCommentContainer {
-  border: 1px solid blue;
-  position: relative;
+.details {
+  display: flex;
+  flex-direction: column;
 }
-.taskInformationContainer {
-  border: 1px solid black;
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.taskNamingConatiner {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 20px;
+  margin-bottom: 60px;
+}
+.taskTitle p{
+  color: var(--grayShades-color);
+  font-size: 34px;
+  font-weight: 600;
+}
+.taskDescribtion p{
+  color: black;
+  font-size: 14px;
+  line-height: 150%;
+  text-align: start;
+}
+
+
+.taskDetailedInformation {
+  display: flex;
+  flex-direction: column;
+
+}
+.taskDetailedInformation h2 {
+  text-align: start;
+  color: #2A2A2A;
+  will-change: 500;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 70px;
+  padding: 12px 0;
+  width: 500px;
+}
+.employeeDetailedInfo,
+.dueData,
+.statusContainer {
+  min-width: 260px;
+}
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Adjust spacing between image and text */
+}
+.taskSelectStyle{
+  display: flex;
+  margin-bottom: 10px;
+}
+.taskSelectStyle select {
+  width: 100%; 
+}
+
+.employeeDetailedInfo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.employeeProfile img{
+  width: 32px;
+  height: 32px;
+  border-radius: 20px;
+}
+.employeeInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-bottom: 25px;
+  gap: 10px;
+}
+.employeeInfo span {
+  font-weight: 300;
+  font-size: 11px;
+  color: #474747;
+}
+.employeeInfo p {
+  color: #0D0F10;
 }
