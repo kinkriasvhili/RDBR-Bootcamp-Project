@@ -172,8 +172,6 @@ export async function postComments(task, text, parentId) {
         }
 
         const newTask = JSON.parse(responseText);
-        console.log(newTask)
-        console.log(task.id)
     } catch (error) {
         console.error("Error:", error);
     }

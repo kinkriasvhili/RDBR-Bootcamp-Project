@@ -25,7 +25,7 @@ export default function SingleTask({task, color, index}) {
         </div>
         <div className={styles.commentContainer}>
           <img className={styles.imgComment} src={commentImage} alt="" />
-          <span className={styles.commentCount}>8</span>
+          <span className={styles.commentCount}>{task.total_comments}</span>
         </div>
       </div>
     </div>
